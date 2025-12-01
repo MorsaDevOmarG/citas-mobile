@@ -17,6 +17,7 @@
     - FlatList
     - Modal
     - Picker: es como un SELECT
+    - Image
 
 ### JSX
 1. Extensión de lenguaje para REACT.
