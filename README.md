@@ -2,6 +2,8 @@
 
 - Creación del proyecto:
   - **_npx @react-native-community/cli init nombreProyecto_**
+- Tener _AndroidStudio_, instalado y abierto, ejecutamos:
+  - **_npx react-native run-android_**
 
 ## Componentes React Native
 1. Todos los contenedores son VIEW.
