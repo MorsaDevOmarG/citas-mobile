@@ -1,97 +1,106 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# Proyecto Citas
 
-# Getting Started
+- Creación del proyecto:
+  - **_npx @react-native-community/cli init nombreProyecto_**
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+## Componentes React Native
+1. Todos los contenedores son VIEW.
+    - Text: Debe ser un texto, ejemplo: LABEL
+    - Button
+    - View: es como un DIV html
+    - StyleSheet
+    - Pressable: es como un BUTTON
+    - Alert
+    - ScroView
+    - FlatList
+    - Modal
+    - Picker: es como un SELECT
 
-## Step 1: Start Metro
+### JSX
+1. Extensión de lenguaje para REACT.
+1. Es JS pero soporta etiquetas y componentes como HTML, basicamente es un lenguaje de Template que muestra el HTML pero tiene todas las funciones de JS.
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+**REGLAS:**
+1. A diferencia de HTML, no es estricto.
+1. Si un elemento HTML tiene una etiqueta de apertura, deberás tener también la
+de cierre, no se pondrá sola.
+1. Cada componente debe tener un return que es lo que se mostrará en pantalla.
+1. En este return debe haber máximo un solo elemento en el nivel máximo.
 
-To start the Metro dev server, run the following command from the root of your React Native project:
+### HOOKS
+1. Están disponibles desde la versión 16.8, antes de ello se ten´ían que crear clases
+para crear y modificar el STATE, con los HOOKS no es necesario.
+1. Los HOOKS se dividen en básicos y adicionales.
 
-```sh
-# Using npm
-npm start
+**CATEGORIAS:**
 
-# OR using Yarn
-yarn start
+- useState
+- useEffect
+- useContext
+
+**Adicionales:**
+
+- useReducer
+- useCallback
+- useMemo
+- useRef
+- useImperativeHandle
+- useLayoutEffect
+- useDebugValue
+
+**Ventajas:**
+
+- Crear propios hooks, de esta forma podrás separar tu código en funciones reutilizables y sacar todo el beneficio de lo que REACT ofrece.
+
+**REGLAS:**
+
+1. Se colocan en la parte superior de tus componentet en REACT.
+1. No se deben colocar dentro de condicionales.
+1. Tampoco se coloan después de un RETURN.
+
+### STATE
+1. Muestra el estado de la app.
+1. Es una variable de información relevante en nuestra app, algunas veces el STATE pertenece a un componente en específico o algunas veces deseas compartirlo a lo largo de diferentes componentes.
+1. El STATE es creado con la funcion: useState();
+
+**Ejemplo:**
+
+```
+    const [cliente, setCliente] = useState({});
+    const [cliente, setCliente] = useState(0);
+    const [cliente, setCliente] = useState([]);
+    const [cliente, setCliente] = useState(false);
 ```
 
-## Step 2: Build and run your app
+- React reacciona en base al STATE, cada que el STATE cambia, la APP se va renderizando y actualiza los cambios.
+- Para modificar el STATE, se utiliza la función que extraemos cuando declaramos el STATE en nuestro componente.
 
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
+## Instalaciones
 
-### Android
+1. Dentro del PROYECTO, instalremos DEVTOOLS, abrimos POWERSHELL:
+`npm i react-devtools`
 
-```sh
-# Using npm
-npm run android
+1. **PROPS:**
+    - Son variables o funciones de otros componentes.
 
-# OR using Yarn
-yarn android
+1. El STATE o FUNCIONES que crees en tus componenetes, solo estarán disponibles en ese componentet.
+1. Una forma de evitar duplicar código y reutilizar esas variables, state o estado y funciones en otros componentes es por medio de PROPS o PROPIEDADES.
+1. Los PROPS se pasan del padre al hijo, nunca se pueden pasar del hijo al padre.
+
+1. Si tienes un STATE que se va a pasar por diferentes componentes, lo mejor es colocarlo en el archivo principal.
+1. Cada nivel de componente deberá tomar y pasar el PROP hacia otros componentes, tecnologías como REDUX o CONTEXT evitan tener que hacerlo de esta forma.
+
+#### **INSTALAR DATE PICKER**
+- `npm i react-native-date-picker`
+- SOLO SI INSTALARAS LA APP EN IOS
+```
+    cd ios
+    pod install
 ```
 
-### iOS
-
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
-
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
-
-```sh
-bundle install
-```
-
-Then, and every time you update your native dependencies, run:
-
-```sh
-bundle exec pod install
-```
-
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
-
-```sh
-# Using npm
-npm run ios
-
-# OR using Yarn
-yarn ios
-```
-
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
-
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
-
-## Step 3: Modify your app
-
-Now that you have successfully run the app, let's make changes!
-
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
-
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
-
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+#### **useEffect:**
+1. Es el más utilizado después de useState.
+2. Siempre es un callback que se ejecuta cuando un STATE cambia o cuando el componente esta listo.
+1. Es el sustituto de lo que antes era: componentDidMount() y: componentDidUpdate()
+1. Al ejecutarse automaticamente cuando el componente esta listo, es un excelente lugar para colocar código para consultar una API o LocalStorage.
+1. Debido a que le podemos pasar una dependencia y estar escuchando por los cambios que sucendan en una variable, puede actualizar el componente cuando ese cambio suceda.
