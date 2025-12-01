@@ -4,21 +4,31 @@ import { Text, SafeAreaView, View, StyleSheet} from 'react-native';
 const App = () => {
 
   return (
-    <SafeAreaView>
+    <SafeAreaView style={styles.container}>
       <Text style={styles.titulo}>
         Administrador de Citas {''}
-          <Text>Veterinaria</Text>
+          <Text style={styles.tituloBold}>Veterinaria</Text>
       </Text>
     </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
+  container: {
+    backgroundColor: '#F3F4F6',
+    flex: 1, // Ocupa toda la pantalla
+  },
+
   titulo: {
     textAlign: 'center',
     fontSize: 30,
     color: '#374151',
-    fontWeight: 'bold',
+    fontWeight: '600',
+  },
+
+  tituloBold: {
+    fontWeight: '900',
+    color: '#6D28D9',
   }
 });
 
