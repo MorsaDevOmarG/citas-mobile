@@ -25,7 +25,7 @@ const App = () => {
     <SafeAreaView style={styles.container}>
       <Text style={styles.titulo}>
         Administrador de Citas {''}
-          <Text style={styles.tituloBold}>Veterinaria</Text>
+        <Text style={styles.tituloBold}>Veterinaria</Text>
       </Text>
 
       {/* <Button
@@ -57,6 +57,7 @@ const App = () => {
       <Formulario
         modalVisible={modalVisible}
         setModalVisible={setModalVisible}
+        nuevaCitaHandler={nuevaCitaHandler}
       />
     </SafeAreaView>
   );

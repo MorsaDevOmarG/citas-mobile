@@ -81,7 +81,8 @@ para crear y modificar el STATE, con los HOOKS no es necesario.
 
 ## Instalaciones
 1. Dentro del PROYECTO, instalremos DEVTOOLS, abrimos POWERSHELL:
-`npm i react-devtools`
+  - `npm i react-devtools`
+
 1. **PROPS:**
     - Son variables o funciones de otros componentes.
 1. El STATE o FUNCIONES que crees en tus componenetes, solo estarán disponibles en ese componentet.
