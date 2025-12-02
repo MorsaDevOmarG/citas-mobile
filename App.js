@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, SafeAreaView, View, StyleSheet, Button, Pressable} from 'react-native';
+import { Text, SafeAreaView, View, StyleSheet, Button, Pressable, Modal} from 'react-native';
 
 const App = () => {
   const nuevaCitaHandler = () => {
@@ -29,6 +29,13 @@ const App = () => {
       >
         <Text style={styles.btnTextoNuevaCita}>Nueva Cita</Text>
       </Pressable>
+
+      <Modal
+        animationType='slide'
+        visible={false}
+      >
+        <Text>Desde el modal</Text>
+      </Modal>
     </SafeAreaView>
   );
 };
