@@ -25,8 +25,9 @@ const App = () => {
         // onPressOut={() => { console.log('Presionaste BTN Out') }}
         // onLongPress={() => { console.log('Presionaste BTN Long Press') }}
         onPress={nuevaCitaHandler}
+        style={styles.btnNuevaCita}
       >
-        <Text>Nueva Cita</Text>
+        <Text style={styles.btnTextoNuevaCita}>Nueva Cita</Text>
       </Pressable>
     </SafeAreaView>
   );
@@ -48,7 +49,23 @@ const styles = StyleSheet.create({
   tituloBold: {
     fontWeight: '900',
     color: '#6D28D9',
-  }
+  },
+
+  btnNuevaCita: {
+    backgroundColor: '#6D28D9',
+    padding: 15,
+    marginTop: 30,
+    marginHorizontal: 20,
+    borderRadius: 10,
+  },
+
+  btnTextoNuevaCita: {
+    color: '#FFF',
+    fontWeight: '900',
+    textAlign: 'center',
+    fontSize: 18,
+    textTransform: 'uppercase',
+  },
 });
 
 export default App;
