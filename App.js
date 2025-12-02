@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, SafeAreaView, View, StyleSheet} from 'react-native';
+import { Text, SafeAreaView, View, StyleSheet, Button} from 'react-native';
 
 const App = () => {
 
@@ -9,6 +9,13 @@ const App = () => {
         Administrador de Citas {''}
           <Text style={styles.tituloBold}>Veterinaria</Text>
       </Text>
+
+      <Button
+        title='Nueva Cita'
+        onPress={() => { console.log('Presionaste BTN')}}
+      >
+
+      </Button>
     </SafeAreaView>
   );
 };

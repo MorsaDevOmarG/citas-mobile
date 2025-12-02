@@ -61,6 +61,11 @@ para crear y modificar el STATE, con los HOOKS no es necesario.
 1. No se deben colocar dentro de condicionales.
 1. Tampoco se coloan después de un RETURN.
 
+### EVENTOS
+- La forma en que _React_ maneja lo eventos son muy similat a como lo hace _JS_ de forma nativa con algunos cambios.
+- Los eventos son: **camelCase**, es decir; en lugar de _onchange_ se utiliza: **onChange**, _onclick_ -> **onClick**.
+- _React Native_ tiene una serie de eventos optimizados para teléfonos móviles como: presionar o dejar presionado un botón por mucho tiempo.
+
 ### STATE
 1. Muestra el estado de la app.
 1. Es una variable de información relevante en nuestra app, algunas veces el STATE pertenece a un componente en específico o algunas veces deseas compartirlo a lo largo de diferentes componentes.
