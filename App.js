@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Text, SafeAreaView, View, StyleSheet, Button, Pressable, Modal} from 'react-native';
 
 const App = () => {
+  const [clientes, setClientes] = useState([]);
+
   const nuevaCitaHandler = () => {
     console.log('Presionaste BTN');
   };
