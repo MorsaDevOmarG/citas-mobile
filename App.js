@@ -6,6 +6,8 @@ const App = () => {
 
   const nuevaCitaHandler = () => {
     console.log('Presionaste BTN');
+
+    setModalVisible(true);
   };
 
   return (
@@ -26,15 +28,17 @@ const App = () => {
         // onPressIn={() => { console.log('Presionaste BTN In') }}
         // onPressOut={() => { console.log('Presionaste BTN Out') }}
         // onLongPress={() => { console.log('Presionaste BTN Long Press') }}
-        onPress={nuevaCitaHandler}
         style={styles.btnNuevaCita}
+        // onPress={nuevaCitaHandler}
+        onPress={() => setModalVisible(true)}
       >
         <Text style={styles.btnTextoNuevaCita}>Nueva Cita</Text>
       </Pressable>
 
       <Modal
         animationType='slide'
-        visible={false}
+        // visible={false}
+        visible={modalVisible}
       >
         <Text>Desde el modal</Text>
       </Modal>
