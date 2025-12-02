@@ -1,5 +1,16 @@
 import React, { useState } from 'react';
-import { Text, SafeAreaView, View, StyleSheet, Button, Pressable, Modal} from 'react-native';
+
+import {
+  Text,
+  SafeAreaView,
+  View,
+  StyleSheet,
+  Button,
+  Pressable,
+  Modal
+} from 'react-native';
+
+import Formulario from './src/components/Formulario';
 
 const App = () => {
   const [modalVisible, setModalVisible] = useState(false);
@@ -35,13 +46,18 @@ const App = () => {
         <Text style={styles.btnTextoNuevaCita}>Nueva Cita</Text>
       </Pressable>
 
-      <Modal
+      {/* <Modal
         animationType='slide'
         // visible={false}
         visible={modalVisible}
       >
         <Text>Desde el modal</Text>
-      </Modal>
+      </Modal> */}
+
+      <Formulario
+        modalVisible={modalVisible}
+        setModalVisible={setModalVisible}
+      />
     </SafeAreaView>
   );
 };
