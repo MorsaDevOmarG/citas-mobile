@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Text, SafeAreaView, View, StyleSheet, Button, Pressable, Modal} from 'react-native';
 
 const App = () => {
-  const [clientes, setClientes] = useState([]);
+  const [modalVisible, setModalVisible] = useState(false);
 
   const nuevaCitaHandler = () => {
     console.log('Presionaste BTN');
