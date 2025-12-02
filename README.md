@@ -30,19 +30,22 @@ de cierre, no se pondrá sola.
 1. Cada componente debe tener un return que es lo que se mostrará en pantalla.
 1. En este return debe haber máximo un solo elemento en el nivel máximo.
 
+### EVENTOS
+- La forma en que _React_ maneja lo eventos son muy similat a como lo hace _JS_ de forma nativa con algunos cambios.
+- Los eventos son: **camelCase**, es decir; en lugar de _onchange_ se utiliza: **onChange**, _onclick_ -> **onClick**.
+- _React Native_ tiene una serie de eventos optimizados para teléfonos móviles como: presionar o dejar presionado un botón por mucho tiempo.
+
 ### HOOKS
 1. Están disponibles desde la versión 16.8, antes de ello se ten´ían que crear clases
 para crear y modificar el STATE, con los HOOKS no es necesario.
 1. Los HOOKS se dividen en básicos y adicionales.
 
 **CATEGORIAS:**
-
 - useState
 - useEffect
 - useContext
 
 **Adicionales:**
-
 - useReducer
 - useCallback
 - useMemo
@@ -52,19 +55,12 @@ para crear y modificar el STATE, con los HOOKS no es necesario.
 - useDebugValue
 
 **Ventajas:**
-
 - Crear propios hooks, de esta forma podrás separar tu código en funciones reutilizables y sacar todo el beneficio de lo que REACT ofrece.
 
 **REGLAS:**
-
 1. Se colocan en la parte superior de tus componentet en REACT.
 1. No se deben colocar dentro de condicionales.
 1. Tampoco se coloan después de un RETURN.
-
-### EVENTOS
-- La forma en que _React_ maneja lo eventos son muy similat a como lo hace _JS_ de forma nativa con algunos cambios.
-- Los eventos son: **camelCase**, es decir; en lugar de _onchange_ se utiliza: **onChange**, _onclick_ -> **onClick**.
-- _React Native_ tiene una serie de eventos optimizados para teléfonos móviles como: presionar o dejar presionado un botón por mucho tiempo.
 
 ### STATE
 1. Muestra el estado de la app.
@@ -84,17 +80,13 @@ para crear y modificar el STATE, con los HOOKS no es necesario.
 - Para modificar el STATE, se utiliza la función que extraemos cuando declaramos el STATE en nuestro componente.
 
 ## Instalaciones
-
 1. Dentro del PROYECTO, instalremos DEVTOOLS, abrimos POWERSHELL:
 `npm i react-devtools`
-
 1. **PROPS:**
     - Son variables o funciones de otros componentes.
-
 1. El STATE o FUNCIONES que crees en tus componenetes, solo estarán disponibles en ese componentet.
 1. Una forma de evitar duplicar código y reutilizar esas variables, state o estado y funciones en otros componentes es por medio de PROPS o PROPIEDADES.
 1. Los PROPS se pasan del padre al hijo, nunca se pueden pasar del hijo al padre.
-
 1. Si tienes un STATE que se va a pasar por diferentes componentes, lo mejor es colocarlo en el archivo principal.
 1. Cada nivel de componente deberá tomar y pasar el PROP hacia otros componentes, tecnologías como REDUX o CONTEXT evitan tener que hacerlo de esta forma.
 
