@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Modal,
   Text,
@@ -10,6 +10,12 @@ import {
 } from 'react-native';
 
 const Formulario = ({ modalVisible }) => {
+  const [paciente, setPaciente] = useState('');
+  const [propietario, setPropietario] = useState('');
+  const [email, setEmail] = useState('');
+  const [telefono, setTelefono] = useState('');
+  const [sintomas, setSintomas] = useState('');
+
   return (
     <Modal
       animationType="slide"
@@ -30,6 +36,8 @@ const Formulario = ({ modalVisible }) => {
               // keyboardType='phone-pad'
               placeholder="Nombre Paciente"
               placeholderTextColor={'#666'}
+              value={paciente}
+              onChangeText={setPaciente}
             />
           </View>
 
@@ -39,6 +47,8 @@ const Formulario = ({ modalVisible }) => {
               style={styles.input}
               placeholder="Nombre Propietario"
               placeholderTextColor={'#666'}
+              value={propietario}
+              onChangeText={setPropietario}
             />
           </View>
 
@@ -49,6 +59,8 @@ const Formulario = ({ modalVisible }) => {
               keyboardType="email-address"
               placeholder="Email Propietario"
               placeholderTextColor={'#666'}
+              value={email}
+              onChangeText={setEmail}
             />
           </View>
 
@@ -59,15 +71,22 @@ const Formulario = ({ modalVisible }) => {
               keyboardType="number-pad"
               placeholder="Teléfono Propietario"
               placeholderTextColor={'#666'}
+              value={telefono}
+              onChangeText={setTelefono}
+              maxLength={10} // Limitar a 10 caracteres
             />
           </View>
 
           <View style={styles.campo}>
             <Text style={styles.label}>Síntomas</Text>
             <TextInput
-              style={styles.input}
+              style={[styles.input, styles.sintomas]}
               placeholder="Síntomas"
               placeholderTextColor={'#666'}
+              value={sintomas}
+              onChangeText={setSintomas}
+              multiline={true} // Permitir múltiples líneas
+              numberOfLines={4} // Altura inicial para Android
             />
           </View>
         </ScrollView>
@@ -113,6 +132,10 @@ const styles = StyleSheet.create({
     padding: 15,
     borderRadius: 10,
   },
+
+  sintomas: {
+    height: 100
+  }
 });
 
 export default Formulario;
