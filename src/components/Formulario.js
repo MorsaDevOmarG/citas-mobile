@@ -34,7 +34,7 @@ const Formulario = ({ modalVisible, setModalVisible }) => {
 
           <Pressable
             style={styles.btnCancelar}
-            onLongPress={ () => setModalVisible(false) }
+            onLongPress={() => setModalVisible(false)}
           >
             <Text style={styles.btnTextoCancelar}>X Cancelar</Text>
           </Pressable>
@@ -95,7 +95,7 @@ const Formulario = ({ modalVisible, setModalVisible }) => {
                 date={fecha}
                 locale="es"
                 // mode='date'
-                onDateChange={ (date) => setFecha(date) }
+                onDateChange={date => setFecha(date)}
               />
             </View>
           </View>
@@ -112,6 +112,12 @@ const Formulario = ({ modalVisible, setModalVisible }) => {
               numberOfLines={4} // Altura inicial para Android
             />
           </View>
+
+          <Pressable
+            style={styles.btnNuevaCita}
+          >
+            <Text style={styles.btnTextoNuevaCita}>Agregar Paciente</Text>
+          </Pressable>
         </ScrollView>
       </SafeAreaView>
     </Modal>
@@ -180,6 +186,22 @@ const styles = StyleSheet.create({
   fechaContenedor: {
     backgroundColor: '#FFF',
     borderRadius: 10,
+  },
+
+  btnNuevaCita: {
+    marginVertical: 50, // margen arriba y abajo
+    backgroundColor: '#F59E0B',
+    paddingVertical: 15, // padding arriba y abajo
+    marginHorizontal: 30,
+    borderRadius: 10,
+  },
+
+  btnTextoNuevaCita: {
+    color: '#5827A4',
+    textAlign: 'center',
+    fontWeight: '900',
+    fontSize: 16,
+    textTransform: 'uppercase',
   },
 });
 
