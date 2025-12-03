@@ -7,10 +7,11 @@ import {
   TextInput,
   View,
   ScrollView,
+  Pressable,
 } from 'react-native';
 import DatePicker from 'react-native-date-picker';
 
-const Formulario = ({ modalVisible }) => {
+const Formulario = ({ modalVisible, setModalVisible }) => {
   const [paciente, setPaciente] = useState('');
   const [propietario, setPropietario] = useState('');
   const [email, setEmail] = useState('');
@@ -30,6 +31,13 @@ const Formulario = ({ modalVisible }) => {
             Nueva {''}
             <Text style={styles.tituloBold}>Cita</Text>
           </Text>
+
+          <Pressable
+            style={styles.btnCancelar}
+            onLongPress={ () => setModalVisible(false) }
+          >
+            <Text style={styles.btnTextoCancelar}>X Cancelar</Text>
+          </Pressable>
 
           <View style={styles.campo}>
             <Text style={styles.label}>Nombre Paciente</Text>
@@ -87,6 +95,7 @@ const Formulario = ({ modalVisible }) => {
                 date={fecha}
                 locale="es"
                 // mode='date'
+                onDateChange={ (date) => setFecha(date) }
               />
             </View>
           </View>
@@ -126,6 +135,23 @@ const styles = StyleSheet.create({
 
   tituloBold: {
     fontWeight: '900',
+  },
+
+  btnCancelar: {
+    marginTop: 20,
+    backgroundColor: '#5827A4',
+    marginHorizontal: 30, // margen a los lados
+    marginVertical: 30, // margen arriba y abajo
+    padding: 15,
+    borderRadius: 10,
+  },
+
+  btnTextoCancelar: {
+    color: '#FFF',
+    fontWeight: '900',
+    textAlign: 'center',
+    fontSize: 16,
+    textTransform: 'uppercase',
   },
 
   campo: {

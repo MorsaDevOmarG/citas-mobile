@@ -50,6 +50,7 @@ const App = () => {
 
       <Formulario
         modalVisible={modalVisible}
+        setModalVisible={setModalVisible}
       />
     </SafeAreaView>
   );
