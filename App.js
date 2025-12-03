@@ -15,12 +15,6 @@ import Formulario from './src/components/Formulario';
 const App = () => {
   const [modalVisible, setModalVisible] = useState(false);
 
-  const nuevaCitaHandler = () => {
-    console.log('Presionaste BTN');
-
-    setModalVisible(true);
-  };
-
   return (
     <SafeAreaView style={styles.container}>
       <Text style={styles.titulo}>
@@ -56,8 +50,6 @@ const App = () => {
 
       <Formulario
         modalVisible={modalVisible}
-        setModalVisible={setModalVisible}
-        nuevaCitaHandler={nuevaCitaHandler}
       />
     </SafeAreaView>
   );
