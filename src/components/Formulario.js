@@ -8,6 +8,7 @@ import {
   View,
   ScrollView,
   Pressable,
+  Alert
 } from 'react-native';
 import DatePicker from 'react-native-date-picker';
 
@@ -18,6 +19,23 @@ const Formulario = ({ modalVisible, setModalVisible }) => {
   const [telefono, setTelefono] = useState('');
   const [fecha, setFecha] = useState(new Date());
   const [sintomas, setSintomas] = useState('');
+
+  const handleCita = () => {
+    // console.log('Agregando nueva cita...');
+
+    if ([ paciente, propietario, email, telefono, sintomas ].includes('')) {
+      // console.log('Todos los campos son obligatorios');
+
+      Alert.alert(
+        'Error',
+        'Todos los campos son obligatorios',
+        // [{ text: 'Recordarme después', style: 'cancel' }, {text: 'Cancelar', style: 'destructive'}, { text: 'Ok', style: 'default' }]
+        [{ text: 'OK' }]
+      );
+
+      return;
+    }
+  };
 
   return (
     <Modal
@@ -115,6 +133,7 @@ const Formulario = ({ modalVisible, setModalVisible }) => {
 
           <Pressable
             style={styles.btnNuevaCita}
+            onPress={handleCita}
           >
             <Text style={styles.btnTextoNuevaCita}>Agregar Paciente</Text>
           </Pressable>
