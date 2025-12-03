@@ -50,6 +50,13 @@ const Formulario = ({ modalVisible, setModalVisible, pacientes, setPacientes }) 
     setPacientes([...pacientes, nuevoPaciente]); // Realiza una copia del arreglo y agrega uno nuevo
 
     setModalVisible(false);
+
+    setPaciente('');
+    setPropietario('');
+    setEmail('');
+    setTelefono('');
+    setFecha(new Date());
+    setSintomas('');
   };
 
   return (
