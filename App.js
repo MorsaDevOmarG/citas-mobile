@@ -7,10 +7,13 @@ import {
   StyleSheet,
   Button,
   Pressable,
-  Modal
+  Modal,
+  FlatList,
 } from 'react-native';
 
 import Formulario from './src/components/Formulario';
+
+import Paciente from './src/components/Paciente';
 
 const App = () => {
   const [modalVisible, setModalVisible] = useState(false);
@@ -55,6 +58,23 @@ const App = () => {
         pacientes={pacientes}
         setPacientes={setPacientes}
       />
+
+      {
+        pacientes.length == 0
+          ? <Text style={styles.noPacientes}>No hay pacientes</Text>
+        // : <Text>Hay pacientes</Text>
+          : <FlatList
+              data={pacientes}
+              keyExtractor={(item) => item.id} // Usar id como key
+              renderItem={ ({ item }) => {
+                return (
+                  <Paciente
+                    item={item}
+                  />
+                );
+              } }
+            />
+      }
     </SafeAreaView>
   );
 };
@@ -91,6 +111,14 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 18,
     textTransform: 'uppercase',
+  },
+
+  noPacientes: {
+    marginTop: 30,
+    textAlign: 'center',
+    fontSize: 24,
+    color: '#374151',
+    fontWeight: '600',
   },
 });
 
