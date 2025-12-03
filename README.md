@@ -92,6 +92,8 @@ para crear y modificar el STATE, con los HOOKS no es necesario.
 1. Cada nivel de componente deberá tomar y pasar el PROP hacia otros componentes, tecnologías como REDUX o CONTEXT evitan tener que hacerlo de esta forma.
 
 #### **INSTALAR DATE PICKER**
+- Obtener diferentes librerías para el proyecto:
+  - **_[React Native Directory](https://reactnative.directory/)_**
 - `npm i react-native-date-picker`
 - SOLO SI INSTALARAS LA APP EN IOS
 ```
