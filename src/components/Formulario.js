@@ -12,7 +12,7 @@ import {
 } from 'react-native';
 import DatePicker from 'react-native-date-picker';
 
-const Formulario = ({ modalVisible, setModalVisible }) => {
+const Formulario = ({ modalVisible, setModalVisible, pacientes, setPacientes }) => {
   const [paciente, setPaciente] = useState('');
   const [propietario, setPropietario] = useState('');
   const [email, setEmail] = useState('');
@@ -35,6 +35,21 @@ const Formulario = ({ modalVisible, setModalVisible }) => {
 
       return;
     }
+
+    const nuevoPaciente = {
+      paciente,
+      propietario,
+      email,
+      telefono,
+      fecha,
+      sintomas
+    };
+    // console.log(nuevoPaciente);
+
+    // setPacientes(nuevoPaciente);
+    setPacientes([...pacientes, nuevoPaciente]); // Realiza una copia del arreglo y agrega uno nuevo
+
+    setModalVisible(false);
   };
 
   return (
