@@ -18,6 +18,17 @@ import Paciente from './src/components/Paciente';
 const App = () => {
   const [modalVisible, setModalVisible] = useState(false);
   const [pacientes, setPacientes] = useState([]);
+  const [paciente, setPaciente] = useState({});
+
+  const pacienteEditar = (id) => {
+    // console.log('Editando...', id);
+
+    const pacienteEditar = pacientes.filter(paciente => paciente.id === id);
+
+    // console.log(pacienteEditar);
+
+    setPaciente(pacienteEditar[0]);
+  };
 
   return (
     <SafeAreaView style={styles.container}>
@@ -57,6 +68,7 @@ const App = () => {
         setModalVisible={setModalVisible}
         pacientes={pacientes}
         setPacientes={setPacientes}
+        paciente={paciente}
       />
 
       {
@@ -71,6 +83,8 @@ const App = () => {
                 return (
                   <Paciente
                     item={item}
+                    setModalVisible={setModalVisible}
+                    pacienteEditar={pacienteEditar}
                   />
                 );
               } }
