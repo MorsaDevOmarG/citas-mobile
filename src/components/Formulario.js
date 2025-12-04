@@ -43,7 +43,7 @@ const Formulario = ({
       setFecha(pacienteObj.fecha);
       setSintomas(pacienteObj.sintomas);
     }
-  }, []);
+  }, [pacienteObj]);
 
   const handleCita = () => {
     // console.log('Agregando nueva cita...');
@@ -95,6 +95,7 @@ const Formulario = ({
 
     setModalVisible(false);
 
+    setId('');
     setPaciente('');
     setPropietario('');
     setEmail('');
@@ -112,7 +113,8 @@ const Formulario = ({
       <SafeAreaView style={styles.contenido}>
         <ScrollView>
           <Text style={styles.titulo}>
-            Nueva {''}
+            {/* Nueva {''} */}
+            {pacienteObj.id ? 'Editar' : 'Nueva'} {''}
             <Text style={styles.tituloBold}>Cita</Text>
           </Text>
 
@@ -121,6 +123,7 @@ const Formulario = ({
             onLongPress={() => {
               setModalVisible(false);
               setPacienteApp({});
+              setId('');
               setPaciente('');
               setPropietario('');
               setEmail('');
@@ -207,7 +210,8 @@ const Formulario = ({
           </View>
 
           <Pressable style={styles.btnNuevaCita} onPress={handleCita}>
-            <Text style={styles.btnTextoNuevaCita}>Agregar Paciente</Text>
+            {/* <Text style={styles.btnTextoNuevaCita}>Agregar Paciente</Text> */}
+            <Text style={styles.btnTextoNuevaCita}>{pacienteObj.id ? 'Editar' : 'Agregar'} Paciente</Text>
           </Pressable>
         </ScrollView>
       </SafeAreaView>
