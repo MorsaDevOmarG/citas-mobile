@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Modal,
   Text,
@@ -12,13 +12,31 @@ import {
 } from 'react-native';
 import DatePicker from 'react-native-date-picker';
 
+// paciente: paciebteobj = Se renombra porque ya tenemos una variable llamada igual
 const Formulario = ({ modalVisible, setModalVisible, pacientes, setPacientes, paciente: pacienteObj }) => {
+  const [id, setId] = useState('');
   const [paciente, setPaciente] = useState('');
   const [propietario, setPropietario] = useState('');
   const [email, setEmail] = useState('');
   const [telefono, setTelefono] = useState('');
   const [fecha, setFecha] = useState(new Date());
   const [sintomas, setSintomas] = useState('');
+
+  useEffect(() => {
+    console.log('Formulario listo...');
+
+    if (Object.keys(pacienteObj).length > 0) {
+      console.log('Hay algo...');
+
+      setId(pacienteObj.id);
+      setPaciente(pacienteObj.paciente);
+      setPropietario(pacienteObj.propietario);
+      setEmail(pacienteObj.email);
+      setTelefono(pacienteObj.telefono);
+      setFecha(pacienteObj.fecha);
+      setSintomas(pacienteObj.sintomas);
+    }
+  }, []);
 
   const handleCita = () => {
     // console.log('Agregando nueva cita...');
@@ -35,6 +53,8 @@ const Formulario = ({ modalVisible, setModalVisible, pacientes, setPacientes, pa
 
       return;
     }
+
+    // Revisar si es un registro nuevo o edición
 
     const nuevoPaciente = {
       id: Date.now(),
