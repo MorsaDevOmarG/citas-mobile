@@ -8,12 +8,19 @@ import {
   View,
   ScrollView,
   Pressable,
-  Alert
+  Alert,
 } from 'react-native';
 import DatePicker from 'react-native-date-picker';
 
 // paciente: paciebteobj = Se renombra porque ya tenemos una variable llamada igual
-const Formulario = ({ modalVisible, setModalVisible, pacientes, setPacientes, paciente: pacienteObj }) => {
+const Formulario = ({
+  modalVisible,
+  setModalVisible,
+  pacientes,
+  setPacientes,
+  paciente: pacienteObj,
+  setPaciente: setPacienteApp,
+}) => {
   const [id, setId] = useState('');
   const [paciente, setPaciente] = useState('');
   const [propietario, setPropietario] = useState('');
@@ -41,34 +48,50 @@ const Formulario = ({ modalVisible, setModalVisible, pacientes, setPacientes, pa
   const handleCita = () => {
     // console.log('Agregando nueva cita...');
 
-    if ([ paciente, propietario, email, telefono, sintomas ].includes('')) {
+    if ([paciente, propietario, email, telefono, sintomas].includes('')) {
       // console.log('Todos los campos son obligatorios');
 
       Alert.alert(
         'Error',
         'Todos los campos son obligatorios',
         // [{ text: 'Recordarme después', style: 'cancel' }, {text: 'Cancelar', style: 'destructive'}, { text: 'Ok', style: 'default' }]
-        [{ text: 'OK' }]
+        [{ text: 'OK' }],
       );
 
       return;
     }
 
     // Revisar si es un registro nuevo o edición
-
     const nuevoPaciente = {
-      id: Date.now(),
+      // id: Date.now(),
       paciente,
       propietario,
       email,
       telefono,
       fecha,
-      sintomas
+      sintomas,
     };
     // console.log(nuevoPaciente);
 
+    if (id) {
+      // Editando
+      nuevoPaciente.id = id;
+
+      const pacientesActualizados = pacientes.map(pacienteState =>
+        pacienteState.id === nuevoPaciente.id ? nuevoPaciente : pacienteState,
+      );
+
+      setPacientes(pacientesActualizados);
+
+      setPacienteApp({});
+    } else {
+      // Nuevo Registro
+      nuevoPaciente.id = Date.now();
+
+      setPacientes([...pacientes, nuevoPaciente]); // Realiza una copia del arreglo y agrega uno nuevo
+    }
+
     // setPacientes(nuevoPaciente);
-    setPacientes([...pacientes, nuevoPaciente]); // Realiza una copia del arreglo y agrega uno nuevo
 
     setModalVisible(false);
 
@@ -95,7 +118,16 @@ const Formulario = ({ modalVisible, setModalVisible, pacientes, setPacientes, pa
 
           <Pressable
             style={styles.btnCancelar}
-            onLongPress={() => setModalVisible(false)}
+            onLongPress={() => {
+              setModalVisible(false);
+              setPacienteApp({});
+              setPaciente('');
+              setPropietario('');
+              setEmail('');
+              setTelefono('');
+              setFecha(new Date());
+              setSintomas('');
+            }}
           >
             <Text style={styles.btnTextoCancelar}>X Cancelar</Text>
           </Pressable>
@@ -174,10 +206,7 @@ const Formulario = ({ modalVisible, setModalVisible, pacientes, setPacientes, pa
             />
           </View>
 
-          <Pressable
-            style={styles.btnNuevaCita}
-            onPress={handleCita}
-          >
+          <Pressable style={styles.btnNuevaCita} onPress={handleCita}>
             <Text style={styles.btnTextoNuevaCita}>Agregar Paciente</Text>
           </Pressable>
         </ScrollView>
@@ -242,7 +271,7 @@ const styles = StyleSheet.create({
   },
 
   sintomas: {
-    height: 100
+    height: 100,
   },
 
   fechaContenedor: {
