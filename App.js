@@ -9,6 +9,7 @@ import {
   Pressable,
   Modal,
   FlatList,
+  Alert
 } from 'react-native';
 
 import Formulario from './src/components/Formulario';
@@ -28,6 +29,36 @@ const App = () => {
     // console.log(pacienteEditar);
 
     setPaciente(pacienteEditar[0]);
+  };
+
+  const pacienteEliminar = id => {
+    // console.log('Eliminando...', id);
+
+    Alert.alert(
+      '¿Deseas eliminar este paciente?',
+      'Un paciente eliminado no se puede recuperar',
+      [
+        {
+          text: 'Cancelar',
+          style: 'cancel'
+        },
+        {
+          text: 'Si, Eliminar',
+          style: 'destructive',
+          onPress: () => {
+            // console.log('Eliminando...');
+
+            const pacientesActualizados = pacientes.filter(
+              pacientesState => pacientesState.id !== id
+            );
+
+            // console.log(pacientesActualizados);
+
+            setPacientes(pacientesActualizados);
+          }
+        }
+      ]
+    );
   };
 
   return (
@@ -86,6 +117,7 @@ const App = () => {
                     item={item}
                     setModalVisible={setModalVisible}
                     pacienteEditar={pacienteEditar}
+                    pacienteEliminar={pacienteEliminar}
                   />
                 );
               } }
