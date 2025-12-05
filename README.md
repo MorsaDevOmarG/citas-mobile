@@ -5,6 +5,12 @@
 - Tener _AndroidStudio_, instalado y abierto, ejecutamos:
   - **_npx react-native run-android_**
 
+## Herramientas y/o Tecnologías
+- React Native
+- CSS (STyleSheet)
+- Sombras:
+  - **_https://ethercreative.github.io/react-native-shadow-generator/_**
+
 ## Componentes React Native
 1. Todos los contenedores son VIEW.
     - Text: Debe ser un texto, ejemplo: LABEL

@@ -18,7 +18,9 @@ const InformacionPaciente = ({ paciente, setModalPaciente }) => {
         </Pressable>
       </View>
 
-      <Text>{paciente.paciente}</Text>
+      <View style={styles.contenido}>
+        <Text>{paciente.paciente}</Text>
+      </View>
     </SafeAreaView>
   );
 };
@@ -57,6 +59,24 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 16,
     textTransform: 'uppercase',
+  },
+
+  contenido: {
+    backgroundColor: '#FFF',
+    marginHorizontal: 30,
+    borderRadius: 10,
+    padding: 10,
+    height: 300,
+    // Sombras: https://ethercreative.github.io/react-native-shadow-generator/
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+
+    elevation: 5,
   },
 });
 
