@@ -16,10 +16,13 @@ import Formulario from './src/components/Formulario';
 
 import Paciente from './src/components/Paciente';
 
+import InformacionPaciente from './src/components/InformacionPaciente';
+
 const App = () => {
   const [modalVisible, setModalVisible] = useState(false);
   const [pacientes, setPacientes] = useState([]);
   const [paciente, setPaciente] = useState({});
+  const [modalPaciente, setModalPaciente] = useState(false);
 
   const pacienteEditar = (id) => {
     // console.log('Editando...', id);
@@ -118,11 +121,19 @@ const App = () => {
                     setModalVisible={setModalVisible}
                     pacienteEditar={pacienteEditar}
                     pacienteEliminar={pacienteEliminar}
+                    setModalPaciente={setModalPaciente}
                   />
                 );
               } }
             />
       }
+
+      <Modal
+        visible={modalPaciente}
+        animationType='fade'
+      >
+        <InformacionPaciente />
+      </Modal>
     </SafeAreaView>
   );
 };
