@@ -1,5 +1,6 @@
 import React from 'react';
 import { Text, View, StyleSheet, Pressable } from 'react-native';
+import { formatearFecha } from '../helpers';
 
 const Paciente = ({
   item,
@@ -21,17 +22,17 @@ const Paciente = ({
     sintomas,
   } = item;
 
-  const formatearFecha = fecha => {
-    const nuevaFecha = new Date(fecha);
-    const opciones = {
-      weekday: 'long',
-      year: 'numeric',
-      month: 'long',
-      day: '2-digit',
-    };
+  // const formatearFecha = fecha => {
+  //   const nuevaFecha = new Date(fecha);
+  //   const opciones = {
+  //     weekday: 'long',
+  //     year: 'numeric',
+  //     month: 'long',
+  //     day: '2-digit',
+  //   };
 
-    return nuevaFecha.toLocaleDateString('es-ES', opciones);
-  };
+  //   return nuevaFecha.toLocaleDateString('es-ES', opciones);
+  // };
 
   return (
     <Pressable

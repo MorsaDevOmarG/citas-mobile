@@ -30,7 +30,7 @@ const Formulario = ({
   const [sintomas, setSintomas] = useState('');
 
   useEffect(() => {
-    console.log('Formulario listo...');
+    // console.log('Formulario listo...');
 
     if (Object.keys(pacienteObj).length > 0) {
       console.log('Hay algo...');
