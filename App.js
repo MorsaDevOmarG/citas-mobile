@@ -64,6 +64,10 @@ const App = () => {
     );
   };
 
+  const cerrarModal = () => {
+    setModalVisible(false);
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <Text style={styles.titulo}>
@@ -97,42 +101,52 @@ const App = () => {
         <Text>Desde el modal</Text>
       </Modal> */}
 
-      <Formulario
+      {/* <Formulario
         modalVisible={modalVisible}
         setModalVisible={setModalVisible}
         pacientes={pacientes}
         setPacientes={setPacientes}
         paciente={paciente}
         setPaciente={setPaciente}
-      />
+      /> */}
 
-      {
-        pacientes.length == 0
-          ? <Text style={styles.noPacientes}>No hay pacientes</Text>
+      {modalVisible && (
+        <Formulario
+          // modalVisible={modalVisible}
+          // setModalVisible={setModalVisible}
+          cerrarModal={cerrarModal}
+          pacientes={pacientes}
+          setPacientes={setPacientes}
+          paciente={paciente}
+          setPaciente={setPaciente}
+        />
+      )}
+
+      {pacientes.length == 0 ? (
+        <Text style={styles.noPacientes}>No hay pacientes</Text>
+      ) : (
         // : <Text>Hay pacientes</Text>
-          : <FlatList
-            style={styles.listado}
-              data={pacientes}
-              keyExtractor={(item) => item.id} // Usar id como key
-              renderItem={ ({ item }) => {
-                return (
-                  <Paciente
-                    item={item}
-                    setModalVisible={setModalVisible}
-                    setPaciente={setPaciente}
-                    pacienteEditar={pacienteEditar}
-                    pacienteEliminar={pacienteEliminar}
-                    setModalPaciente={setModalPaciente}
-                  />
-                );
-              } }
-            />
-      }
+        <FlatList
+          style={styles.listado}
+          data={pacientes}
+          keyExtractor={item => item.id} // Usar id como key
+          renderItem={({ item }) => {
+            return (
+              <Paciente
+                item={item}
+                setModalVisible={setModalVisible}
+                setPaciente={setPaciente}
+                pacienteEditar={pacienteEditar}
+                pacienteEliminar={pacienteEliminar}
+                setModalPaciente={setModalPaciente}
+              />
+            );
+          }}
+        />
+      )}
 
-      <Modal
-        visible={modalPaciente}
-        animationType='fade'
-      >
+      {/* La diferencia de poner MODAL y el COMPOMENTE directamente, radica en que el MODAL se monta y desmonta acorde a la variable que lo modifica, en cambio el COMPONENTE siempre estará, esto ayuda a mejorar el performance, otra opción es mostrarlo respecto a un condicional */}
+      <Modal visible={modalPaciente} animationType="fade">
         <InformacionPaciente
           paciente={paciente}
           setPaciente={setPaciente}
