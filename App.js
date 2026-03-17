@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import {
   Text,
@@ -13,16 +13,33 @@ import {
 } from 'react-native';
 
 import Formulario from './src/components/Formulario';
-
 import Paciente from './src/components/Paciente';
-
 import InformacionPaciente from './src/components/InformacionPaciente';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const App = () => {
   const [modalVisible, setModalVisible] = useState(false);
   const [pacientes, setPacientes] = useState([]);
   const [paciente, setPaciente] = useState({});
   const [modalPaciente, setModalPaciente] = useState(false);
+  const [citas, setCitas] = useState([]);
+
+  useEffect(() => {
+    const obtenerCitasStorage = async () => {
+      try {
+        const citasStorage = await AsyncStorage.getItem('citas');
+        console.log(citasStorage);
+
+        if (citasStorage) {
+          setCitas(JSON.parse(citasStorage));
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    obtenerCitasStorage();
+  }, []);
 
   const pacienteEditar = id => {
     // console.log('Editando...', id);
