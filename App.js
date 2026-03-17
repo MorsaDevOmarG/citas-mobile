@@ -65,7 +65,7 @@ const App = () => {
         {
           text: 'Si, Eliminar',
           style: 'destructive',
-          onPress: () => {
+          onPress: async () => {
             // console.log('Eliminando...');
 
             const pacientesActualizados = pacientes.filter(
@@ -75,6 +75,16 @@ const App = () => {
             // console.log(pacientesActualizados);
 
             setPacientes(pacientesActualizados);
+
+            // Elimina las citas de AsyncStorage
+            try {
+              await AsyncStorage.setItem(
+                'citas',
+                JSON.stringify(pacientesActualizados),
+              );
+            } catch (error) {
+              console.log(error);
+            }
           },
         },
       ],

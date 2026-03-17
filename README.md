@@ -12,10 +12,11 @@
 - Sombras:
   - **_https://ethercreative.github.io/react-native-shadow-generator/_**
 - Async Storage
-  - **_npm install @react-native-async-storage/async-storage@^1.19.5_**
   - **_npm install @react-native-async-storage/async-storage_**
   - Si te marca error, por la versión de _React_, intala la siguiente, de preferencia:
     - **_npm install @react-native-async-storage/async-storage@^1.19.5_**
+  - **NOTA**
+    - _ASYNC_, No esta funcionando para versión de React > a la **0.72**
 
 ## Componentes React Native
 
